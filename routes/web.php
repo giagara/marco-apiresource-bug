@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return response()->success(new UserResource(User::paginate()));
+
 });
+
